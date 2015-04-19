@@ -1,0 +1,11 @@
+init:
+  # An Ethereum smart contract to sell 1 Beanie Baby for "500 by December"
+  contract.storage["BUYER"] = 0
+  contract.storage["SELLER"] = 0
+  contract.storage["DEADLINE"] = 0
+code:
+  if ((contract.balance >= 500*10^18) and (block.timestamp == contract.storage["DEADLINE"])):
+    send(contract.storage["SELLER"], contract.balance, (tx.gas - 100))
+  else:
+    stop
+
