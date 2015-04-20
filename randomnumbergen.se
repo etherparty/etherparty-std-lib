@@ -1,0 +1,17 @@
+init:
+  # A utility contract that returns a pseudo-random number in a given range
+  # 1st input is the lower bound of the range, inclusive
+  # 2nd input is the upper bound of the range, inclusive
+  # optional 3rd input is used as a seed for random number generation
+code:
+  lower_bound = msg.data[0]
+  upper_bound = msg.data[1]
+  seed = msg.data[2]
+  range = ((upper_bound - lower_bound) + 1)
+  temp = array(3+1)
+  temp[1] = block.prevhash
+  temp[2] = seed
+  randomness = sha3(temp+1*32, 2)
+  result = (lower_bound + (randomness % range))
+  temp[3] = result
+  return(temp+3*32, 1)
