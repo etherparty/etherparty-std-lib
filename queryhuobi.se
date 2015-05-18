@@ -1,0 +1,5 @@
+def init():
+  self.storage[huobi] = "0xa381f37f23cb99ca036997008403ba1366fd8259"
+
+def code():
+  return huobi.access(price)

@@ -1,0 +1,9 @@
+def init():
+    self.creator = msg.sender
+
+def update(k, v):
+    if msg.sender == self.creator:
+        self.storage[k] = v
+
+def query(k):
+    return(self.storage[k])
